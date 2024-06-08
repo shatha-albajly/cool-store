@@ -8,7 +8,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
-  const user = useSelector((state) => state.userState.user);
+  const user = useSelector((state) => state);
 
   const handleLogout = () => {
     navigate('/');
@@ -22,7 +22,6 @@ const Header = () => {
       <div className='align-element flex justify-center sm:justify-end'>
         {user ? (
           <div className='flex gap-x-2 sm:gap-x-8 items-center'>
-            <p className='text-xs sm:text-sm'>Hello, {user.username}</p>
             <button
               className='btn btn-xs btn-outline btn-primary'
               onClick={handleLogout}
