@@ -8,7 +8,11 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
-  const user = useSelector((state) => state);
+
+  // Adjust the selector based on the correct state structure
+  const userToken = useSelector((state) => state.userState?.user?.token); // Adjusted userState based on common naming conventions
+  const state = useSelector((state) => state);
+  console.log(state);
 
   const handleLogout = () => {
     navigate('/');
@@ -17,10 +21,12 @@ const Header = () => {
     queryClient.removeQueries();
   };
 
+  console.log(userToken);
+
   return (
     <header className='bg-neutral py-2 text-neutral-content'>
       <div className='align-element flex justify-center sm:justify-end'>
-        {user ? (
+        {userToken ? (
           <div className='flex gap-x-2 sm:gap-x-8 items-center'>
             <button
               className='btn btn-xs btn-outline btn-primary'
@@ -34,11 +40,11 @@ const Header = () => {
             <Link to='/login' className='link link-hover text-xs sm:text-sm'>
               Sign in / Guest
             </Link>
-
           </div>
         )}
       </div>
     </header>
   );
 };
+
 export default Header;

@@ -14,6 +14,7 @@ export const action =
 
       try {
         const response = await customFetch.post('/auth/login', data);
+        console.log(response.data);
         store.dispatch(loginUser(response.data));
         toast.success('logged in successfully');
         return redirect('/');
@@ -38,6 +39,8 @@ const Login = () => {
         password: 'emilyspass',
         expiresInMins: 6000
       });
+
+      console.log(response.data);
       dispatch(loginUser(response.data));
       toast.success('welcome guest user');
       navigate('/');

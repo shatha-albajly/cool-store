@@ -21,35 +21,16 @@ const Filters = () => {
 
   return (
     <Form className='bg-base-200 rounded-md px-8 py-4  '>
-      <div className='justify-between flex flex-wrap mb-4  '>
-        {/*SEARCH */}
-        <div className='min-w-[250px] md:w-[450px]'>
-          <FormInput
-            type='search'
-            label='search product'
-            name='search'
-            size='input-sm'
-            defaultValue={search}
-            register={register}
-            validation={{
-              required: 'Search is required',
-              minLength: {
-                value: 3,
-                message: 'Search must be at least 3 characters long'
-              }
-            }}
-            error={errors.search}
-          />
-        </div>
-        <span className='text-center text-lg font-bold mt-0 md:mt-9 mx-1'>or</span>
+      <div className='grid  grid-cols-1 md:grid-cols-2 gap-4 mb-4 '>
+
 
         {/* CATEGORIES */}
-        <div className='min-w-[250px] md:w-[450px] '>
+        <div className=' '>
           <FormSelect
             label='select category'
             name='category'
             list={categories}
-            size='select-sm'
+            size='select'
             register={register}
 
             defaultValue={category}
@@ -60,37 +41,38 @@ const Filters = () => {
           />
 
         </div>
+        <div className=' '>
+
+          <FormSelect
+            label='sort by'
+            name='order'
+            list={['asc', 'desc']}
+            size='select'
+            register={register}
+
+            defaultValue={order}
+            validation={{
+              required: 'Order is required'
+            }}
+            error={errors.order}
+          />
+        </div>
 
 
 
       </div>
-      <div className='mb-6 min-w-[250px] md:w-[450px]'>
-        {/* ORDER */}
-        <FormSelect
-          label='sort by'
-          name='order'
-          list={['asc', 'desc']}
-          size='select-sm'
-          register={register}
 
-          defaultValue={order}
-          validation={{
-            required: 'Order is required'
-          }}
-          error={errors.order}
-        />
-      </div>
 
 
 
       {/* BUTTONS */}
-      <div className='justify-between block  md:flex w-full     '>
+      <div className='grid  grid-cols-1 md:grid-cols-2 gap-4      '>
 
 
-        <button type='submit' className='btn btn-primary min-w-[250px] md:w-[450px] mb-4  '>
+        <button type='submit' className='btn btn-primary mb-4 '>
           search
         </button>
-        <Link to='/products' className='btn btn-accent min-w-[250px] md:w-[450px] mb-4 '>
+        <Link to='/products' className='btn btn-accent mb-4 '>
           reset
         </Link>
       </div>
